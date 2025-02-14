@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Home - My Blog{% endblock %}
+
+{% block content %}
+<h1 class="mt-4"> Последние посты </h1>
+
+
+{% for post in posts %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title">{{ post.title }}</h2>
+            <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+            <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">Читать далее &rarr;</a>
+        </div>
+        <div class="card-footer text-muted">
+            Posted on {{ post.created_at|date:"F d, Y" }} by {{ post.author.username }}
+        </div>
+    </div>
+{% empty %}
+    <p> Сообщений пока нет </p>
+{% endfor %}
+{% endblock %}

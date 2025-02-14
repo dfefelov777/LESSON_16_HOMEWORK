@@ -1,0 +1,8 @@
+Django==4.2
+djangorestframework
+psycopg2-binary
+gunicorn
+python-dotenv
+whitenoise
+coverage
+flake8
